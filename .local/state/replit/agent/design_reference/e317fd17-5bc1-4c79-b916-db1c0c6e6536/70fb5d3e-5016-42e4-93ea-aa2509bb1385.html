@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medisight - Healthcare Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'medisight-teal': '#10B981',
+                        'medisight-dark-teal': '#059669',
+                        'sidebar-gray': '#F9FAFB',
+                        'text-primary': '#111827',
+                        'text-secondary': '#6B7280',
+                        'border-light': '#E5E7EB'
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- @COMPONENT: MainLayout -->
+    <div class="flex h-screen">
+        <!-- @COMPONENT: Sidebar -->
+        <div class="w-72 bg-white shadow-sm border-r border-gray-200 flex flex-col">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-medisight-teal rounded-lg flex items-center justify-center">
+                        <i class="fas fa-stethoscope text-white text-sm"></i>
+                    </div>
+                    <span class="font-semibold text-xl text-text-primary">Medisight</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg bg-medisight-teal text-white" data-mock="true">
+                            <i class="fas fa-th-large w-5"></i>
+                            <span class="font-medium">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                            <i class="fas fa-users w-5"></i>
+                            <span class="font-medium">Patients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                            <i class="fas fa-envelope w-5"></i>
+                            <span class="font-medium">Message</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                            <i class="fas fa-calendar-alt w-5"></i>
+                            <span class="font-medium">Appointments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                            <i class="fas fa-file-invoice w-5"></i>
+                            <span class="font-medium">Billing</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                            <i class="fas fa-credit-card w-5"></i>
+                            <span class="font-medium">Transactions</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tools Section -->
+                <div class="mt-8">
+                    <p class="text-xs font-medium text-text-secondary uppercase tracking-wide px-3 mb-3">Tools</p>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                                <i class="fas fa-cog w-5"></i>
+                                <span class="font-medium">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                                <i class="fas fa-comments w-5"></i>
+                                <span class="font-medium">Chat & Support</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors" data-mock="true">
+                                <i class="fas fa-question-circle w-5"></i>
+                                <span class="font-medium">Help Center</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Upgrade Section -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="bg-medisight-teal bg-opacity-10 rounded-xl p-4 mb-4">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-8 h-8 bg-medisight-teal rounded-full flex items-center justify-center">
+                            <i class="fas fa-crown text-white text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm text-text-primary">Upgrade to premium</p>
+                            <p class="text-xs text-text-secondary">Upgrade your account to premium to get more features.</p>
+                        </div>
+                    </div>
+                    <button class="w-full bg-text-primary text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors" data-mock="true">
+                        Upgrade plan
+                    </button>
+                </div>
+
+                <!-- User Profile -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-gray-600"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-medium text-sm text-text-primary" data-bind="user.name">Robert Fox</p>
+                        <p class="text-xs text-text-secondary" data-bind="user.email">robertfox@email.com</p>
+                    </div>
+                    <button class="text-text-secondary hover:text-text-primary" data-mock="true">
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: Sidebar -->
+
+        <!-- @COMPONENT: MainContent -->
+        <div class="flex-1 overflow-auto">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 px-8 py-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-1">
+                            <i class="fas fa-sun text-yellow-500"></i>
+                            <h1 class="text-xl font-semibold text-text-primary">Good Morning, Dr. Robert!</h1>
+                        </div>
+                        <p class="text-text-secondary">Overview of all of your patients and your income</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button class="text-text-secondary hover:text-text-primary" data-mock="true">
+                            <i class="fas fa-bell text-lg"></i>
+                        </button>
+                        <button class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-text-secondary hover:bg-gray-50 transition-colors" data-event="click:exportData">
+                            <i class="fas fa-download"></i>
+                            <span>Export</span>
+                        </button>
+                        <button class="flex items-center space-x-2 px-4 py-2 bg-medisight-teal text-white rounded-lg text-sm font-medium hover:bg-medisight-dark-teal transition-colors" data-event="click:createNew">
+                            <i class="fas fa-plus"></i>
+                            <span>Create new</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-8">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-semibold text-text-primary mb-2">Dashboard</h2>
+                </div>
+
+                <!-- Metrics Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- @MAP: metrics.map(metric => ( -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-medisight-teal bg-opacity-10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-users text-medisight-teal text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+15%</span>
+                        </div>
+                        <p class="text-text-secondary text-sm mb-1">Total Patients</p>
+                        <p class="text-3xl font-bold text-text-primary" data-bind="metrics.totalPatients">579</p>
+                        <button class="text-medisight-teal text-sm font-medium mt-3 flex items-center space-x-1 hover:text-medisight-dark-teal transition-colors" data-event="click:seeDetails">
+                            <span>See details</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-medisight-teal bg-opacity-10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-calendar-check text-medisight-teal text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+10%</span>
+                        </div>
+                        <p class="text-text-secondary text-sm mb-1">Total Appointment</p>
+                        <p class="text-3xl font-bold text-text-primary" data-bind="metrics.totalAppointments">54</p>
+                        <button class="text-medisight-teal text-sm font-medium mt-3 flex items-center space-x-1 hover:text-medisight-dark-teal transition-colors" data-event="click:seeDetails">
+                            <span>See details</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-medisight-teal bg-opacity-10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-dollar-sign text-medisight-teal text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+28%</span>
+                        </div>
+                        <p class="text-text-secondary text-sm mb-1">Total Income</p>
+                        <p class="text-3xl font-bold text-text-primary" data-bind="metrics.totalIncome">$8,399.24</p>
+                        <button class="text-medisight-teal text-sm font-medium mt-3 flex items-center space-x-1 hover:text-medisight-dark-teal transition-colors" data-event="click:seeDetails">
+                            <span>See details</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-medisight-teal bg-opacity-10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-procedures text-medisight-teal text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+12%</span>
+                        </div>
+                        <p class="text-text-secondary text-sm mb-1">Total Treatments</p>
+                        <p class="text-3xl font-bold text-text-primary" data-bind="metrics.totalTreatments">112</p>
+                        <button class="text-medisight-teal text-sm font-medium mt-3 flex items-center space-x-1 hover:text-medisight-dark-teal transition-colors" data-event="click:seeDetails">
+                            <span>See details</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+
+                <!-- Overview and Appointments -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                    <!-- Overview Chart -->
+                    <div class="lg:col-span-2 bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Overview</h3>
+                            <button class="text-text-secondary hover:text-text-primary">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center space-x-6">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-medisight-teal rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Hospitalized patients</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                                    <span class="text-sm text-text-secondary">Outpatients</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="h-64">
+                            <canvas id="overviewChart" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Appointment List -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-text-primary">Appointment list</h3>
+                            <button class="text-text-secondary hover:text-text-primary">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- @MAP: appointments.map(appointment => ( -->
+                            <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold text-sm">BS</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium text-sm text-text-primary" data-bind="appointment.patientName">Brooklyn Simmons</p>
+                                    <p class="text-xs text-text-secondary" data-bind="appointment.type">Allergy Testing</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-text-secondary" data-bind="appointment.date">Tomorrow</p>
+                                    <p class="font-medium text-sm text-text-primary" data-bind="appointment.time">10:30</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <span class="text-blue-600 font-semibold text-sm">CH</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium text-sm text-text-primary">Courtney Henry</p>
+                                    <p class="text-xs text-text-secondary">Routine Lab Tests</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-text-secondary">Tomorrow</p>
+                                    <p class="font-medium text-sm text-text-primary">10:00</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-green-600 font-semibold text-sm">SO</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium text-sm text-text-primary">Sarah Miller Olivia</p>
+                                    <p class="text-xs text-text-secondary">Chronic Disease Management</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-text-secondary">Today</p>
+                                    <p class="font-medium text-sm text-text-primary">15:00</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <span class="text-purple-600 font-semibold text-sm">EH</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium text-sm text-text-primary">Esther Howard</p>
+                                    <p class="text-xs text-text-secondary">Allergy Testing</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-text-secondary">Today</p>
+                                    <p class="font-medium text-sm text-text-primary">14:00</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                    <span class="text-yellow-600 font-semibold text-sm">AM</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium text-sm text-text-primary">Arlene McCoy</p>
+                                    <p class="text-xs text-text-secondary">Routine Lab Tests</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-text-secondary">Today</p>
+                                    <p class="font-medium text-sm text-text-primary">11:30</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                                    <span class="text-indigo-600 font-semibold text-sm">JC</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium text-sm text-text-primary">Jane Cooper</p>
+                                    <p class="text-xs text-text-secondary">Acute Illness</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-text-secondary">Today</p>
+                                    <p class="font-medium text-sm text-text-primary">10:00</p>
+                                </div>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient List -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-text-primary mb-4">Patient list</h3>
+                        
+                        <!-- Search and Filter -->
+                        <div class="flex items-center justify-between">
+                            <div class="relative">
+                                <i class="fas fa-search absolute left-3 top-3 text-text-secondary text-sm"></i>
+                                <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-medisight-teal focus:border-transparent w-64" data-mock="true">
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-text-secondary hover:bg-gray-50 transition-colors" data-event="click:filter">
+                                    <i class="fas fa-filter"></i>
+                                    <span>Filter</span>
+                                </button>
+                                <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-text-secondary focus:ring-2 focus:ring-medisight-teal focus:border-transparent" data-mock="true">
+                                    <option>All status</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 border-b border-gray-200">
+                                <tr>
+                                    <th class="text-left py-3 px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+                                        <input type="checkbox" class="rounded border-gray-300 text-medisight-teal focus:ring-medisight-teal" data-mock="true">
+                                    </th>
+                                    <th class="text-left py-3 px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">Name</th>
+                                    <th class="text-left py-3 px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">Gender</th>
+                                    <th class="text-left py-3 px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">Date of Birth</th>
+                                    <th class="text-left py-3 px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">Age</th>
+                                    <th class="text-left py-3 px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">Department</th>
+                                    <th class="text-left py-3 px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">Patient ID</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <!-- @MAP: patients.map(patient => ( -->
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="py-4 px-6">
+                                        <input type="checkbox" class="rounded border-gray-300 text-medisight-teal focus:ring-medisight-teal" data-mock="true">
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-600 font-semibold text-xs">BS</span>
+                                            </div>
+                                            <span class="font-medium text-sm text-text-primary" data-bind="patient.name">Brooklyn Simmons</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary" data-bind="patient.gender">Male</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary" data-bind="patient.dob">1995-03-18</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary" data-bind="patient.age">29 years old</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary" data-bind="patient.department">Cardiology</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary" data-bind="patient.id">#OMT23AA</td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="py-4 px-6">
+                                        <input type="checkbox" class="rounded border-gray-300 text-medisight-teal focus:ring-medisight-teal" data-mock="true">
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                                <span class="text-blue-600 font-semibold text-xs">AJ</span>
+                                            </div>
+                                            <span class="font-medium text-sm text-text-primary">Anthony Johnson</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">Male</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">1997-03-18</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">27 years old</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">Cardiology</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">#AT456BB</td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="py-4 px-6">
+                                        <input type="checkbox" class="rounded border-gray-300 text-medisight-teal focus:ring-medisight-teal" data-mock="true">
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                                <span class="text-green-600 font-semibold text-xs">SO</span>
+                                            </div>
+                                            <span class="font-medium text-sm text-text-primary">Sarah Miller Olivia</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">Female</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">1987-03-18</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">37 years old</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">Oncology</td>
+                                    <td class="py-4 px-6 text-sm text-text-secondary">#EA789CC</td>
+                                </tr>
+                                <!-- @END_MAP )) -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: MainContent -->
+    </div>
+    <!-- @END_COMPONENT: MainLayout -->
+
+    <script>
+        // Chart initialization
+        (function() {
+            const ctx = document.getElementById('overviewChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Hospitalized patients',
+                            data: [100, 120, 115, 140, 180, 130],
+                            borderColor: '#10B981',
+                            backgroundColor: 'transparent',
+                            tension: 0.4,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#10B981'
+                        }, {
+                            label: 'Outpatients',
+                            data: [80, 90, 70, 130, 150, 98],
+                            borderColor: '#D1D5DB',
+                            backgroundColor: 'transparent',
+                            tension: 0.4,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#D1D5DB'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: '#F3F4F6'
+                                },
+                                ticks: {
+                                    color: '#6B7280'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    color: '#6B7280'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        })();
+
+        // TODO: Implement EHR integration functionality
+        // TODO: Implement appointment scheduling with automated reminders
+        // TODO: Implement insurance claim processing
+        // TODO: Implement billing and invoice management
+        // TODO: Implement patient search and filtering
+        // TODO: Add real-time data synchronization
+    </script>
+</body>
+</html>

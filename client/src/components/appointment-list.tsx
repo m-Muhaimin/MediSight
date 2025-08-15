@@ -43,14 +43,14 @@ export default function AppointmentList({ appointments }: AppointmentListProps) 
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
-      <div className="flex items-center justify-between mb-4 sm:mb-6">
-        <h3 className="text-base sm:text-lg font-semibold text-text-primary">Appointment list</h3>
+    <div className="bg-white rounded-lg p-5 border border-gray-200 shadow-sm">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-base font-semibold text-text-primary">Appointment list</h3>
         <button 
           className="text-text-secondary hover:text-text-primary p-1"
           data-testid="button-appointment-options"
         >
-          <MoreHorizontal className="w-4 h-4 sm:w-5 sm:h-5" />
+          <MoreHorizontal className="w-4 h-4" />
         </button>
       </div>
 
@@ -63,16 +63,16 @@ export default function AppointmentList({ appointments }: AppointmentListProps) 
           appointments.map((appointment, index) => (
             <div 
               key={appointment.id} 
-              className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
               data-testid={`appointment-item-${index}`}
             >
-              <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center ${getAvatarColor(appointment.patientName)}`}>
-                <span className="font-semibold text-xs sm:text-sm">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${getAvatarColor(appointment.patientName)}`}>
+                <span className="font-semibold text-xs">
                   {getInitials(appointment.patientName)}
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-xs sm:text-sm text-text-primary truncate" data-testid={`text-patient-name-${index}`}>
+                <p className="font-medium text-sm text-text-primary truncate" data-testid={`text-patient-name-${index}`}>
                   {appointment.patientName}
                 </p>
                 <p className="text-xs text-text-secondary truncate" data-testid={`text-appointment-type-${index}`}>
@@ -83,7 +83,7 @@ export default function AppointmentList({ appointments }: AppointmentListProps) 
                 <p className="text-xs text-text-secondary" data-testid={`text-appointment-date-${index}`}>
                   {formatDate(appointment.appointmentDate)}
                 </p>
-                <p className="font-medium text-xs sm:text-sm text-text-primary" data-testid={`text-appointment-time-${index}`}>
+                <p className="font-medium text-sm text-text-primary" data-testid={`text-appointment-time-${index}`}>
                   {appointment.appointmentTime}
                 </p>
               </div>

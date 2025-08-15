@@ -39,13 +39,13 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Logo */}
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-5 border-b border-gray-200">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-medisight-teal rounded-lg flex items-center justify-center">
-                <i className="fas fa-stethoscope text-white text-sm"></i>
+            <div className="flex items-center space-x-2">
+              <div className="w-6 h-6 bg-medisight-teal rounded-md flex items-center justify-center">
+                <i className="fas fa-stethoscope text-white text-xs"></i>
               </div>
-              <span className="font-semibold text-xl text-text-primary">Medisight</span>
+              <span className="font-medium text-base text-text-primary">Medisight</span>
             </div>
             <button
               onClick={onToggle}
@@ -59,19 +59,19 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
 
         {/* Navigation */}
         <nav className="flex-1 p-4">
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {navigationItems.map((item, index) => (
               <li key={index}>
                 <a
                   href="#"
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+                  className={`flex items-center space-x-3 px-3 py-2 rounded-md text-sm transition-colors ${
                     item.active
                       ? "bg-medisight-teal text-white"
                       : "text-text-secondary hover:bg-gray-50"
                   }`}
                   data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >
-                  <i className={`fas fa-${item.icon} w-5`}></i>
+                  <i className={`fas fa-${item.icon} w-4 text-xs`}></i>
                   <span className="font-medium">{item.label}</span>
                 </a>
               </li>
@@ -79,19 +79,19 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           </ul>
 
           {/* Tools Section */}
-          <div className="mt-8">
-            <p className="text-xs font-medium text-text-secondary uppercase tracking-wide px-3 mb-3">
+          <div className="mt-6">
+            <p className="text-xs font-medium text-text-secondary uppercase tracking-wide px-3 mb-2">
               Tools
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {toolItems.map((item, index) => (
                 <li key={index}>
                   <a
                     href="#"
-                    className="flex items-center space-x-3 p-3 rounded-lg text-text-secondary hover:bg-gray-50 transition-colors"
+                    className="flex items-center space-x-3 px-3 py-2 rounded-md text-sm text-text-secondary hover:bg-gray-50 transition-colors"
                     data-testid={`tool-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
-                    <i className={`fas fa-${item.icon} w-5`}></i>
+                    <i className={`fas fa-${item.icon} w-4 text-xs`}></i>
                     <span className="font-medium">{item.label}</span>
                   </a>
                 </li>
@@ -102,20 +102,20 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
 
         {/* Upgrade Section */}
         <div className="p-4 border-t border-gray-200">
-          <div className="bg-medisight-teal bg-opacity-10 rounded-xl p-4 mb-4">
-            <div className="flex items-center space-x-3 mb-3">
-              <div className="w-8 h-8 bg-medisight-teal rounded-full flex items-center justify-center">
+          <div className="bg-medisight-teal bg-opacity-10 rounded-lg p-3 mb-4">
+            <div className="flex items-center space-x-2 mb-2">
+              <div className="w-6 h-6 bg-medisight-teal rounded-full flex items-center justify-center">
                 <Crown className="text-white w-3 h-3" />
               </div>
               <div>
-                <p className="font-semibold text-sm text-text-primary">Upgrade to premium</p>
+                <p className="font-medium text-xs text-text-primary">Upgrade to premium</p>
                 <p className="text-xs text-text-secondary">
                   Upgrade your account to premium to get more features.
                 </p>
               </div>
             </div>
             <button 
-              className="w-full bg-text-primary text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors"
+              className="w-full bg-text-primary text-white py-1.5 px-3 rounded-md text-xs font-medium hover:bg-gray-800 transition-colors"
               data-testid="button-upgrade-plan"
             >
               Upgrade plan
@@ -123,12 +123,12 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           </div>
 
           {/* User Profile */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <User className="text-gray-600 w-5 h-5" />
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+              <User className="text-gray-600 w-4 h-4" />
             </div>
             <div className="flex-1">
-              <p className="font-medium text-sm text-text-primary">Robert Fox</p>
+              <p className="font-medium text-xs text-text-primary">Robert Fox</p>
               <p className="text-xs text-text-secondary">robertfox@email.com</p>
             </div>
             <button className="text-text-secondary hover:text-text-primary" data-testid="button-user-dropdown">

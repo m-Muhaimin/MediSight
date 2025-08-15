@@ -37,3 +37,34 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Dt"
+mode = "sequential"
+author = 46430781
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm install @supabase/supabase-js drizzle-orm postgres"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm install drizzle-kit"
+
+[[workflows.workflow]]
+name = "DB Migration "
+mode = "sequential"
+author = 46430781
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx drizzle-kit push"
+
+[[workflows.workflow]]
+name = "rm"
+mode = "sequential"
+author = 46430781
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx update-browserlist-db@latest"

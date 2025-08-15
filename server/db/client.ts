@@ -1,15 +1,33 @@
-// server/db/client.ts
 import { createClient } from "@supabase/supabase-js";
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
+import dotenv from "dotenv";
 
+// 1. Load environment variables
+dotenv.config({ path: '.env' }); // or '../../.env' if nested
 
+// 2. Validate environment variables
+function getEnvVar(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing environment variable: ${name}`);
+  }
+  return value;
+}
+
+// 3. Initialize Supabase client
 export const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
+  getEnvVar('SUPABASE_URL'),
+  getEnvVar('SUPABASE_ANON_KEY'),
+  {
+    auth: {
+      persistSession: false // Recommended for server-side usage
+    }
+  }
 );
 
-const connectionString = process.env.SUPABASE_DB_URL!;
-const sql = postgres(connectionString, { ssl: "require" });
-
-export const db = drizzle(sql);
+// 4. Initialize Drizzle ORM
+export const db = drizzle(
+  postgres(getEnvVar('SUPABASE_DB_URL'), 
+  { ssl: "require" }
+);

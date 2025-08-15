@@ -5,10 +5,10 @@ if (!process.env.DATABASE_URL) {
 }
 
 export default defineConfig({
-  out: "./migrations",
   schema: "./shared/schema.ts",
-  dialect: "postgresql",
+  out: "./drizzle",
+  driver: "pg",
   dbCredentials: {
-    url: process.env.DATABASE_URL,
+    connectionString: process.env.SUPABASE_DB_URL!,
   },
 });

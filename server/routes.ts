@@ -1,7 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertPatientSchema, insertAppointmentSchema, insertMetricsSchema, insertChartDataSchema } from "@shared/schema";
+// Importer file
+import { storage } from './storage.js';
+import { insertPatientSchema, insertAppointmentSchema, insertMetricsSchema, insertChartDataSchema } from "@shared/schema.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Patients routes

@@ -8,31 +8,31 @@ interface OverviewChartProps {
 
 export default function OverviewChart({ data }: OverviewChartProps) {
   return (
-    <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-text-primary">Overview</h3>
+    <div className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <h3 className="text-base sm:text-lg font-semibold text-text-primary">Overview</h3>
         <button 
-          className="text-text-secondary hover:text-text-primary"
+          className="text-text-secondary hover:text-text-primary p-1"
           data-testid="button-chart-options"
         >
-          <MoreHorizontal className="w-5 h-5" />
+          <MoreHorizontal className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
       
-      <div className="mb-6">
-        <div className="flex items-center space-x-6">
+      <div className="mb-4 sm:mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-6">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-medisight-teal rounded-full"></div>
-            <span className="text-sm text-text-secondary">Hospitalized patients</span>
+            <span className="text-xs sm:text-sm text-text-secondary">Hospitalized patients</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
-            <span className="text-sm text-text-secondary">Outpatients</span>
+            <span className="text-xs sm:text-sm text-text-secondary">Outpatients</span>
           </div>
         </div>
       </div>
 
-      <div className="h-64" data-testid="chart-overview">
+      <div className="h-48 sm:h-64" data-testid="chart-overview">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
             <XAxis 

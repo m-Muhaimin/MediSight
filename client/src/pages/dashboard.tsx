@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Sidebar from "@/components/sidebar";
 import Header from "@/components/header";
@@ -9,6 +10,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 import type { Metrics, Patient, Appointment, ChartData } from "@shared/schema";
 
 export default function Dashboard() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Close sidebar on large screens
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
   const { data: metrics, isLoading: metricsLoading } = useQuery<Metrics>({
     queryKey: ["/api/metrics"],
   });
@@ -26,19 +44,19 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="flex h-screen">
-      <Sidebar />
+    <div className="flex h-screen bg-gray-50">
+      <Sidebar isOpen={sidebarOpen} onToggle={toggleSidebar} />
       
-      <div className="flex-1 overflow-auto">
-        <Header />
+      <div className="flex-1 overflow-auto min-w-0">
+        <Header onSidebarToggle={toggleSidebar} />
         
-        <div className="p-8">
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold text-text-primary mb-2">Dashboard</h2>
+        <div className="p-4 sm:p-6 lg:p-8">
+          <div className="mb-6 lg:mb-8">
+            <h2 className="text-xl sm:text-2xl font-semibold text-text-primary mb-2">Dashboard</h2>
           </div>
 
           {/* Metrics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 lg:mb-8">
             {metricsLoading ? (
               Array.from({ length: 4 }).map((_, i) => (
                 <Skeleton key={i} className="h-40 w-full" />
@@ -82,8 +100,8 @@ export default function Dashboard() {
           </div>
 
           {/* Overview and Appointments */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-6 lg:mb-8">
+            <div className="lg:col-span-2 order-2 lg:order-1">
               {chartLoading ? (
                 <Skeleton className="h-80 w-full" />
               ) : chartData ? (
@@ -95,7 +113,7 @@ export default function Dashboard() {
               )}
             </div>
 
-            <div>
+            <div className="order-1 lg:order-2">
               {appointmentsLoading ? (
                 <Skeleton className="h-80 w-full" />
               ) : appointments ? (

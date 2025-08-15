@@ -50,13 +50,14 @@ export default function Dashboard() {
       <div className="flex-1 overflow-auto min-w-0">
         <Header onSidebarToggle={toggleSidebar} />
         
-        <div className="p-4 sm:p-6 lg:p-8">
-          <div className="mb-6 lg:mb-8">
-            <h2 className="text-xl sm:text-2xl font-semibold text-text-primary mb-2">Dashboard</h2>
+        <div className="p-6">
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold text-text-primary mb-1">Dashboard</h2>
+            <p className="text-sm text-text-secondary">Overview of all of your patients and your income</p>
           </div>
 
           {/* Metrics Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 lg:mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {metricsLoading ? (
               Array.from({ length: 4 }).map((_, i) => (
                 <Skeleton key={i} className="h-40 w-full" />
@@ -100,7 +101,7 @@ export default function Dashboard() {
           </div>
 
           {/* Overview and Appointments */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-6 lg:mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
             <div className="lg:col-span-2 order-2 lg:order-1">
               {chartLoading ? (
                 <Skeleton className="h-80 w-full" />

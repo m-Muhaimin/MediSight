@@ -72,34 +72,35 @@ export default function PatientTable({ patients }: PatientTableProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
-      <div className="p-4 sm:p-6 border-b border-gray-200">
-        <h3 className="text-base sm:text-lg font-semibold text-text-primary mb-3 sm:mb-4">Patient list</h3>
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+      <div className="p-5 border-b border-gray-200">
+        <h3 className="text-base font-semibold text-text-primary mb-4">Patient list</h3>
         
         {/* Search and Filter */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-3 sm:space-y-0">
-          <div className="relative w-full sm:w-64">
+        <div className="flex items-center justify-between space-x-3">
+          <div className="relative w-64">
             <Search className="absolute left-3 top-3 h-4 w-4 text-text-secondary" />
             <Input
               type="text"
               placeholder="Search..."
-              className="pl-10 w-full"
+              className="pl-10 h-9 text-sm"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               data-testid="input-patient-search"
             />
           </div>
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex items-center space-x-3">
             <Button 
               variant="outline" 
-              className="flex items-center space-x-2 text-text-secondary hover:bg-gray-50 text-sm"
+              size="sm"
+              className="flex items-center space-x-2 text-text-secondary text-xs px-3 py-1.5 h-8 border-gray-300"
               data-testid="button-filter"
             >
-              <Filter className="h-4 w-4" />
-              <span className="hidden sm:inline">Filter</span>
+              <Filter className="h-3 w-3" />
+              <span>Filter</span>
             </Button>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-28 sm:w-32 text-sm" data-testid="select-status-filter">
+              <SelectTrigger className="w-32 h-8 text-xs" data-testid="select-status-filter">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -117,29 +118,29 @@ export default function PatientTable({ patients }: PatientTableProps) {
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
-              <th className="text-left py-3 px-4 lg:px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+              <th className="text-left py-2 px-5 text-xs font-medium text-text-secondary uppercase tracking-wider">
                 <Checkbox
                   checked={selectedPatients.length === filteredPatients.length && filteredPatients.length > 0}
                   onCheckedChange={handleSelectAll}
                   data-testid="checkbox-select-all"
                 />
               </th>
-              <th className="text-left py-3 px-4 lg:px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+              <th className="text-left py-2 px-5 text-xs font-medium text-text-secondary uppercase tracking-wider">
                 Name
               </th>
-              <th className="text-left py-3 px-4 lg:px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+              <th className="text-left py-2 px-5 text-xs font-medium text-text-secondary uppercase tracking-wider">
                 Gender
               </th>
-              <th className="text-left py-3 px-4 lg:px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+              <th className="text-left py-2 px-5 text-xs font-medium text-text-secondary uppercase tracking-wider">
                 Date of Birth
               </th>
-              <th className="text-left py-3 px-4 lg:px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+              <th className="text-left py-2 px-5 text-xs font-medium text-text-secondary uppercase tracking-wider">
                 Age
               </th>
-              <th className="text-left py-3 px-4 lg:px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+              <th className="text-left py-2 px-5 text-xs font-medium text-text-secondary uppercase tracking-wider">
                 Department
               </th>
-              <th className="text-left py-3 px-4 lg:px-6 text-xs font-medium text-text-secondary uppercase tracking-wider">
+              <th className="text-left py-2 px-5 text-xs font-medium text-text-secondary uppercase tracking-wider">
                 Patient ID
               </th>
             </tr>
@@ -158,14 +159,14 @@ export default function PatientTable({ patients }: PatientTableProps) {
                   className="hover:bg-gray-50 transition-colors"
                   data-testid={`row-patient-${index}`}
                 >
-                  <td className="py-4 px-4 lg:px-6">
+                  <td className="py-3 px-5">
                     <Checkbox
                       checked={selectedPatients.includes(patient.id)}
                       onCheckedChange={(checked) => handleSelectPatient(patient.id, checked as boolean)}
                       data-testid={`checkbox-patient-${index}`}
                     />
                   </td>
-                  <td className="py-4 px-4 lg:px-6">
+                  <td className="py-3 px-5">
                     <div className="flex items-center space-x-3">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${getAvatarColor(patient.name)}`}>
                         <span className="font-semibold text-xs">
@@ -177,19 +178,19 @@ export default function PatientTable({ patients }: PatientTableProps) {
                       </span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 lg:px-6 text-sm text-text-secondary" data-testid={`text-patient-gender-${index}`}>
+                  <td className="py-3 px-5 text-sm text-text-secondary" data-testid={`text-patient-gender-${index}`}>
                     {patient.gender}
                   </td>
-                  <td className="py-4 px-4 lg:px-6 text-sm text-text-secondary" data-testid={`text-patient-dob-${index}`}>
+                  <td className="py-3 px-5 text-sm text-text-secondary" data-testid={`text-patient-dob-${index}`}>
                     {patient.dateOfBirth}
                   </td>
-                  <td className="py-4 px-4 lg:px-6 text-sm text-text-secondary" data-testid={`text-patient-age-${index}`}>
-                    {calculateAge(patient.dateOfBirth)}
+                  <td className="py-3 px-5 text-sm text-text-secondary" data-testid={`text-patient-age-${index}`}>
+                    {calculateAge(patient.dateOfBirth)} years old
                   </td>
-                  <td className="py-4 px-4 lg:px-6 text-sm text-text-secondary" data-testid={`text-patient-department-${index}`}>
+                  <td className="py-3 px-5 text-sm text-text-secondary" data-testid={`text-patient-department-${index}`}>
                     {patient.department}
                   </td>
-                  <td className="py-4 px-4 lg:px-6 text-sm text-text-secondary" data-testid={`text-patient-id-${index}`}>
+                  <td className="py-3 px-5 text-sm text-text-secondary" data-testid={`text-patient-id-${index}`}>
                     {patient.patientId}
                   </td>
                 </tr>

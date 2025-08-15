@@ -26,22 +26,22 @@ export default function MetricCard({ icon, title, value, growth, "data-testid": 
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm" data-testid={testId}>
-      <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-medisight-teal bg-opacity-10 rounded-lg flex items-center justify-center">
-          <i className={`${getIconClass(icon)} text-medisight-teal text-base sm:text-lg`}></i>
+    <div className="bg-white rounded-lg p-5 border border-gray-200 shadow-sm" data-testid={testId}>
+      <div className="flex items-center justify-between mb-3">
+        <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">
+          <i className={`${getIconClass(icon)} text-text-secondary text-sm`}></i>
         </div>
-        <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">
+        <span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
           {growth}
         </span>
       </div>
-      <p className="text-text-secondary text-xs sm:text-sm mb-1">{title}</p>
-      <p className="text-2xl sm:text-3xl font-bold text-text-primary" data-testid={`text-${title.toLowerCase().replace(/\s+/g, '-')}-value`}>
+      <p className="text-text-secondary text-xs mb-1">{title}</p>
+      <p className="text-2xl font-bold text-text-primary mb-2" data-testid={`text-${title.toLowerCase().replace(/\s+/g, '-')}-value`}>
         {value}
       </p>
       <Button 
         variant="ghost" 
-        className="text-medisight-teal text-xs sm:text-sm font-medium mt-2 sm:mt-3 p-0 h-auto flex items-center space-x-1 hover:text-medisight-dark-teal transition-colors"
+        className="text-medisight-teal text-xs font-medium p-0 h-auto flex items-center space-x-1 hover:text-medisight-dark-teal transition-colors"
         data-testid={`button-see-details-${title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         <span>See details</span>
